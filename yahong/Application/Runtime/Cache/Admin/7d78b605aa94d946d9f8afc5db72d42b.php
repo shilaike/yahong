@@ -1,0 +1,43 @@
+<?php if (!defined('THINK_PATH')) exit();?><input id="cg" style="width:150px">
+<div id="dlg" class="easyui-dialog" style="width:500px;height:250px;padding:10px 30px;"
+     title="Register" buttons="#dlg-buttons">
+    <h2>Account Information</h2>
+    <form id="ff" method="post">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" style="width:350px;"/></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type="text" name="address" style="width:350px;"/></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><select class="easyui-combotree" url="data/city_data.json" name="city" style="width:156px;"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="savereg()">Submit</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancel</a>
+</div>
+<script>
+$('#cg').combogrid({
+panelWidth:500,
+url: 'form5_getdata.php',
+idField:'itemid',
+textField:'productid',
+mode:'remote',
+fitColumns:true,
+columns:[[
+{field:'itemid',title:'Item ID',width:60},
+{field:'productid',title:'Product ID',align:'right',width:80},
+{field:'listprice',title:'List Price',align:'right',width:60},
+{field:'unitcost',title:'Unit Cost',align:'right',width:60},
+{field:'attr1',title:'Attribute',width:150},
+{field:'status',title:'Stauts',align:'center',width:60}
+]]
+});
+</script>
